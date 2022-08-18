@@ -5,9 +5,10 @@ from flask import (Flask, render_template, make_response, request, redirect,
 from services import (convert_to_csv_and_save_to_aws,
                       join_tables_and_save_to_aws, get_unique_tags,
                       delete_all_temporary_csv_files)
-from settings import s3, BUCKET_NAME
+from settings import s3, BUCKET_NAME, SECRET_KEY
 
 app = Flask(__name__)
+app.config['SECTER_KEY'] = SECRET_KEY
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -66,4 +67,4 @@ def result_table():
 
 
 if __name__ == '__main__':
-    app.run(port=5000, debug=True)
+    app.run(port=5000, debug=False)
