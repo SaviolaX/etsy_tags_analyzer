@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% block content %}
+<div style="margin: 0 auto 0 auto">
+  <h1 align="center" class="mb-4">Result page</h1>
+  <div class="table table-striped">
+    {{ html_table | safe | truncate(5500, False, ' ') }}
+  </div>
+  <p align='center' class="fs-5">
+    Download table to get more rows:
+    <button class="btn btn-success">
+      <a style="color: white; text-decoration: none;" href="{{ download_url }}">{{ filename }}</a>
+    </button>
+  </p>
+</div>
+
+{% endblock %}
